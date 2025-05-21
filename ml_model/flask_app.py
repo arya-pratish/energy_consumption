@@ -15,12 +15,12 @@ def home():
 @app.route("/predict", methods=["POST"])
 def predict():
     # Get form data
-    build_type = int(request.form['Building Type'])
-    sqft = int(request.form['Square Footage'])
-    occupants = int(request.form['Number of Occupants'])
-    appliances = int(request.form['Appliances Used'])
-    avg_temp = int(request.form['Average Temperature'])
-    dow = 1 if request.form['Day of Week'] == "Weekend" else 0
+    build_type = int(request.form['build_type'])
+    sqft = int(request.form['sqft'])
+    occupants = int(request.form['occupants'])
+    appliances = int(request.form['appliances'])
+    avg_temp = int(request.form['avg_temp'])
+    dow = 1 if request.form['dow'] == "Weekend" else 0
     
 
     # Prepare features for prediction
