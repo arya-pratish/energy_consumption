@@ -49,12 +49,3 @@ with open("model.pkl", "wb") as file:
 print("Model trained and saved as model.pkl!")
 
 
-
-workspace = os.getenv('GITHUB_WORKSPACE')
-
-# Define the directory where your Python script is located (ModelCleaning)
-model_cleaning_dir = os.path.join(workspace, 'ml_model')
-
-# Define the full path for the output file
-output_path = os.path.join(model_cleaning_dir, 'cleaned_data.csv')
-
