@@ -16,10 +16,10 @@ def home():
 def predict():
     # Get form data
     build_type = int(request.form['build_type'])
-    sqft = int(request.form['sqft'])
+    sqft = float(request.form['sqft'])
     occupants = int(request.form['occupants'])
     appliances = int(request.form['appliances'])
-    avg_temp = int(request.form['avg_temp'])
+    avg_temp = float(request.form['avg_temp'])
     dow = 1 if request.form['dow'] == "Weekend" else 0
     
 
