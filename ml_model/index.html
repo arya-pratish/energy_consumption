@@ -8,34 +8,33 @@
 <body>
     <h2>Insurance Details Form</h2>
     <form action="/predict" method="post">
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required><br><br>
 
-        <label for="sex">Sex:</label>
-        <select id="sex" name="sex" required>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
+        <label for="Building Type">Building Type:</label>
+        <select id="BUilding Type" name="build_type" required>
+            <option value="0">Residential</option>
+            <option value="1">Commercial</option>
+            <option value="2">Industrial</option>
         </select><br><br>
 
-        <label for="bmi">BMI:</label>
-        <input type="number" step="0.1" id="bmi" name="bmi" required><br><br>
+        <label for="Square Footage">Square Footage:</label>
+        <input type="number" id="Square Footage" name="sqft" min="1" required><br><br>
 
-        <label for="children">Number of Children:</label>
-        <input type="number" id="children" name="children" required><br><br>
+        <label for="Number of Occupants">Number of Occupants:</label>
+        <input type="number" id="Number of Occupants" name="occupants" min="1" required><br><br>
 
-        <label for="smoker">Smoker:</label>
-        <select id="smoker" name="smoker" required>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
+        <label for="Appliances Used">Appliances Used:</label>
+        <input type="number" id="Appliances Used" name="appliances" min="1" required><br><br>
+
+        <label for="Average Temperature">Average Temperature:</label>
+        <input type="number" id="Average Temperature" name="avg_temp" step="0.1" required><br><br>
+
+
+        <label for="Day of Week">Day of Week:</label>
+        <select id="Day of Week" name="dow" required>
+            <option value="Weekday">Weekday</option>
+            <option value="Weekend">Weekend</option>
         </select><br><br>
 
-        <label for="region">Region:</label>
-        <select id="region" name="region" required>
-            <option value="0">Southwest</option>
-            <option value="1">Southeast</option>
-            <option value="2">Northeast</option>
-            <option value="3">Northwest</option>
-        </select><br><br>
 
         <button type="submit">Submit</button>
     </form>

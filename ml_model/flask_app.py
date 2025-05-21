@@ -25,7 +25,7 @@ def predict():
 
     # Prepare features for prediction
     
-    feature_names = ["build_type", "sqft", "occupants", "appliances", "avg_temp", "dow"]
+    feature_names = ['Building Type', 'Square Footage', 'Number of Occupants', 'Appliances Used', 'Average Temperature', 'Day of Week']
     features = pd.DataFrame([[build_type, sqft, occupants, appliances, avg_temp, dow]], columns=feature_names)
 
     # Predict charges
