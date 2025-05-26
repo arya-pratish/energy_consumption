@@ -17,14 +17,14 @@ jobs:
       - name: Build and Push to docker hub
         run: |
           cd ml_model
-          docker build . -t pratisharya/energy_cons_pred:1.0
-          docker push pratisharya/energy_cons_pred:1.0
+          docker build . -t pratisharya/energy_cons_pred:1.1
+          docker push pratisharya/energy_cons_pred:1.1
   
   PullandRunImage:
     runs-on: self-hosted
     steps:
       - name: push image from docker hub
         run: |
-          docker pull pratisharya/energy_cons_pred:latest
-          docker run pratisharya/energy_cons_pred:latest
+          docker pull pratisharya/energy_cons_pred:1.1
+          docker run pratisharya/energy_cons_pred:1.1
 
