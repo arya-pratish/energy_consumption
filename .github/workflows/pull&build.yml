@@ -1,0 +1,14 @@
+name: pull and build the image
+on: workflow_dispatch:
+
+jobs: 
+  PullandRunImage:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4 
+      - name: pull image from docker hub
+        run: |
+          docker pull pratisharya/energy_cons_pred:latest
+          docker run pratisharya/energy_cons_pred:latest
+
