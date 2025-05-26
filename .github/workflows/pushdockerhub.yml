@@ -10,12 +10,13 @@ jobs:
   dockerbuild:
     runs-on: self-hosted
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout
+      uses: actions/checkout@v4
     - name: Build The Docker Image
       run: |
         cd ml_model
-        docker build . -t workflow-test:$(date)
-        docker run workflow-test:$(date )
+        docker build . -t workflow-test:$(date +%s)
+        docker run workflow-test:$(date +%s)
         
   build-and-test:
     runs-on: ubuntu-latest
@@ -61,7 +62,7 @@ jobs:
       uses: docker/build-push-action@v4
       with:
         context: .
-        file: ./ml_model/Dockerfile
+        file: ml_model/Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/flasktest-app:latest
 
