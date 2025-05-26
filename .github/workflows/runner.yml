@@ -2,9 +2,9 @@ name: Build the image
 on: workflow_dispatch
 
 jobs:
-  steps1: 
-    name: CI pipeline
+  CI pipeline: 
     runs-on: self-hosted
+      steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Login to Docker Hub
