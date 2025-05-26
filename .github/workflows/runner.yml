@@ -20,7 +20,7 @@ jobs:
           docker build . -t pratisharya/energy_cons_pred:1.0
           docker push pratisharya/energy_cons_pred:1.0
   
-  Push the Image:
+  PullandRunImage:
     runs-on: self-hosted
     steps:
       - name: push image from docker hub
