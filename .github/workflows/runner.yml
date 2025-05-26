@@ -16,7 +16,7 @@ jobs:
 
       - name: Set variable
         run: |
-          echo "Version_Tag=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
+          echo "Version_Tag=${GITHUB_REF##*/}" >> $GITHUB_ENV
           echo "Image_Tag=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
       - name: Build and Push to docker hub
         run: |
