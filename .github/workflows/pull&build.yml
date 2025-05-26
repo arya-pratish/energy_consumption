@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v4 
       - name: pull image from docker hub
         run: |
-          cd ml_model
+          cd ./ml_model
           docker pull pratisharya/energy_cons_pred:latest
           docker run pratisharya/energy_cons_pred:latest
 
