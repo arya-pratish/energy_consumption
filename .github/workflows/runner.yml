@@ -19,6 +19,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: minor
+	        RELEASE_BRANCHES: Dev
+	        INITIAL_VERSION: 1.0.0
 
       - name: Set variable
         run: |
