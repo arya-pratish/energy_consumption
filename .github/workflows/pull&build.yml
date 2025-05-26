@@ -1,5 +1,5 @@
 name: pull and build the image
-on: workflow_dispatch:
+on: workflow_dispatch
 
 jobs: 
   PullandRunImage:
