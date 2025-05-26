@@ -14,8 +14,8 @@ jobs:
     - name: Build The Docker Image
       run: |
         cd ml_model
-        docker build .  --tag workflow-test:$(date +%s)
-        docker run workflow-test:$(date +%s)
+        docker build .  --tag workflow-test:$(date)
+        docker run workflow-test:$(date )
   build-and-test:
     runs-on: ubuntu-latest
 
@@ -62,7 +62,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/flasktest-app:latest
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/flasktest-app:latest
 
     - name: Image digest
       run: echo ${{ steps.build-and-publish.outputs.digest }}
