@@ -16,6 +16,7 @@ jobs:
         cd ml_model
         docker build . -t workflow-test:$(date)
         docker run workflow-test:$(date )
+        
   build-and-test:
     runs-on: ubuntu-latest
 
