@@ -14,21 +14,22 @@ jobs:
             username: ${{secrets.DOCKER_HUB_USERNAME}}
             password: ${{secrets.DOCKER_HUB_PASSWORD}} 
 
-      - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DEFAULT_BUMP: minor
+   #   - name: Bump version and push tag
+   #     uses: anothrNick/github-tag-action@v1
+    #    env:
+    #      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #      DEFAULT_BUMP: minor
 
       - name: Set variable
         run: |
           echo "Version_Tag=${GITHUB_REF##*/}" >> $GITHUB_ENV
           echo "Image_Tag=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-      - name: Build and Push to docker hub
-        run: |
-          cd ml_model
-          docker build . -t pratisharya/energy_cons_pred:${{ secrets.GITHUB_TOKEN}} -t pratisharya/energy_cons_pred:${{ env.Version_Tag}}
-          docker push pratisharya/energy_cons_pred:${{ secrets.GITHUB_TOKEN}}
+          echo $GITHUB_ENV
+    #  - name: Build and Push to docker hub
+     #   run: |
+     #     cd ml_model
+      #    docker build . -t pratisharya/energy_cons_pred:${{ .GITHUB_TOKEN}} -t pratisharya/energy_cons_pred:${{ env.Version_Tag}}
+       #   docker push pratisharya/energy_cons_pred:${{ secrets.GITHUB_TOKEN}}
   #        docker push pratisharya/energy_cons_pred:latest
   
   
