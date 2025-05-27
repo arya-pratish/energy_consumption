@@ -25,11 +25,11 @@ jobs:
           echo "Version_Tag=${GITHUB_REF##*/}" >> $GITHUB_ENV
           echo "Image_Tag=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
           echo $GITHUB_REF##*
-    #  - name: Build and Push to docker hub
-     #   run: |
-     #     cd ml_model
-      #    docker build . -t pratisharya/energy_cons_pred:${{ .GITHUB_TOKEN}} -t pratisharya/energy_cons_pred:${{ env.Version_Tag}}
-       #   docker push pratisharya/energy_cons_pred:${{ secrets.GITHUB_TOKEN}}
+      - name: Build and Push to docker hub
+        run: |
+          cd ml_model
+          docker build . -t pratisharya/energy_cons_pred:${{ env.Image_Tag}} -t pratisharya/energy_cons_pred:latest
+          docker push pratisharya/energy_cons_pred:${{ env.Image_Tag}}
   #        docker push pratisharya/energy_cons_pred:latest
   
   
