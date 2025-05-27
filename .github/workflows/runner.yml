@@ -17,7 +17,7 @@ jobs:
       - name: Bump version and push tag
         uses: anothrNick/github-tag-action@v1
         env:
-          GITHUB_TOKEN: ${{ vars.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
           DEFAULT_BUMP: minor
           INITIAL_VERSION: 0.0.0
       - name: Set variable
@@ -28,8 +28,8 @@ jobs:
       - name: Build and Push to docker hub
         run: |
           cd ml_model
-          docker build . -t pratisharya/energy_cons_pred:${{ vars.GITHUB_TOKEN}} -t pratisharya/energy_cons_pred:latest
-          docker push pratisharya/energy_cons_pred:${{ vars.GITHUB_TOKEN}}
+          docker build . -t pratisharya/energy_cons_pred:${{ secrets.GITHUB_TOKEN}} -t pratisharya/energy_cons_pred:latest
+          docker push pratisharya/energy_cons_pred:${{ secrets.GITHUB_TOKEN}}
           docker push pratisharya/energy_cons_pred:latest
   
   
