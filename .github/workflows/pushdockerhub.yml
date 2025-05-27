@@ -59,12 +59,14 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-
+    
+    - name: Debug file list
+      run: ls -la ./ml_model
 
     - name: Build & push Docker image
       uses: docker/build-push-action@v2
       with:
-        context: .
+        context: ./ml_model/
         file: ml_model/Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/flasktest-app:latest
