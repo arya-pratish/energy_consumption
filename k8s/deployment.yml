@@ -16,11 +16,11 @@ spec:
       - name: energy-pred
         image: pratisharya/energy_cons_pred:latest
         ports:
-        - containerPort: 5000
+        - containerPort: 80
         readinessProbe:
           httpGet:
             path: /health
-            port: 5000
+            port: 80
           initialDelaySeconds: 5
           periodSeconds: 10
 
