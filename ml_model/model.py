@@ -17,9 +17,15 @@ df.columns = df.columns.str.strip()
 # Remove leading/trailing whitespace from string values
 df = df.map(lambda x: x.strip() if isinstance(x, str) else x)
 
+def con_str_num(a):
+    if a.isdigit():
+        return int(a)
+    elif len(a)==0:
+        return pd.NA
+    return a
+
 # Convert numerical string into integer
-#df=df.map(lambda x: (int(x) if x.isdigit() else pd.NA if len(x)==0 else x)
-#                               if isinstance(x,str) else x)
+df=df.map(lambda x: con_str_num(x) if isinstance(x,str) else x)
 
 # Drop rows with any missing values
 df.dropna(inplace=True)

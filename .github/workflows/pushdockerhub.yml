@@ -16,10 +16,10 @@ jobs:
     - name: Build The Docker Image
       run: |
         cd ml_model
-        tag=$(date +%s)
+        tag=$(date +%Y%m%d%H%M%S)
         docker build . -t workflow-test:$tag
         docker run workflow-test:$tag
-        
+       
   build-and-test:
     runs-on: ubuntu-latest
 

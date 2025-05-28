@@ -10,6 +10,10 @@ jobs:
       - name: pull image from docker hub
         run: |
           cd ./ml_model
-          docker pull pratisharya/energy_cons_pred:latest
-          docker run pratisharya/energy_cons_pred:latest
-
+          if docker pull pratisharya/energy_cons_pred:1.2; then
+            echo "Image pulled successfully"
+            docker run --rm pratisharya/energy_cons_pred:1.2
+          else
+            echo "Failed to pull image"
+            exit 1
+          fi
