@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: energy-pred
-        image: pratisharya/energy_cons_pred:1.2
+        image: pratisharya/energy_cons_pred:latest
         ports:
         - containerPort: 5000
         readinessProbe:
