@@ -7,7 +7,7 @@ from ml_model.preprocessing import con_str_num
 
 
 def test_func_digit():
-    assert con_str_num('900')== 9000, "Fail to convert into numeric"
+    assert con_str_num('9000')== 9000, "Fail to convert into numeric"
 
 def test_func_null():
     assert con_str_num('') is pd.NA, "Fail to identify NULL value"
