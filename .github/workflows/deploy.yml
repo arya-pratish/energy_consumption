@@ -1,0 +1,26 @@
+name: CI/CD for Dockerized Flask App
+
+on:
+  workflow_dispatch
+#  push:
+#    branches: Dev
+#  pull_request:
+#    branches: Dev
+
+jobs:
+  deployment:
+    runs-on: self-hosted
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Start the minikube
+      run: |
+        minikube stop
+        minikube delete
+        minikube start
+
+    - name: Start the deplyment and services
+      run: |
+        minikube kubectl apply -f k8s/deployment.yml
+        kubectl get deployments
+        
