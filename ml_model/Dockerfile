@@ -3,6 +3,7 @@ WORKDIR /opt/flask_predictor
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt
 COPY data.csv .
+COPY preprocessing.py .
 COPY model.py .
 RUN python3.9 model.py
 RUN mkdir templates
