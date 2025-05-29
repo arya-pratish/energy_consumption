@@ -18,6 +18,7 @@ jobs:
                           run: |
                                 cd ml_model
                                 pip install -r requirements.txt
+                                
                         - name: clean_data
                           run: |
                                 cd test

@@ -2,14 +2,14 @@ import sys
 # caution: path[0] is reserved for script path (or '' in REPL)
 sys.path.insert(1, '/home/runner/work/energy_consumption/energy_consumption')
 
-from ml_model import model
+from ml_model.model import con_str_num
 import pandas as pd
 
 def check_func_digit():
-    assert model.con_str_num('9000')== 9000, "Fail to convert into numeric"
+    assert con_str_num('9000')== 9000, "Fail to convert into numeric"
 
 def check_func_null():
-    assert model.con_str_num('') is pd.NA, "Fail to identify NULL value"
+    assert con_str_num('') is pd.NA, "Fail to identify NULL value"
 
 def check_func_str():
-    assert model.con_str_num('Jack')== 'Jack', "Fail to identify string value"
+    assert con_str_num('Jack')== 'Jack', "Fail to identify string value"
