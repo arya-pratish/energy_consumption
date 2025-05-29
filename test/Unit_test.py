@@ -1,4 +1,4 @@
-import ml_model.model
+from ml_model import model 
 import pandas as pd
 
 def check_func_digit():
