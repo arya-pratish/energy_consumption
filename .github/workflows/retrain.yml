@@ -23,5 +23,5 @@ jobs:
                           run: |
 
                                 cd test
-                                copy ./ml_model/data.csv .
+                                cp ./ml_model/data.csv .
                                 python Unit_test.py
