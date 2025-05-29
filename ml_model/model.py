@@ -1,41 +1,20 @@
-import os
 import pandas as pd
 import pickle
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
+import preprocessing as p
 
 # Load CSV file
 df = pd.read_csv('data.csv')
+
+
 
 # Show original data
 print("Original Data:")
 print(df.head())
 
-# Strip whitespace from column names
-df.columns = df.columns.str.strip()
-
-# Remove leading/trailing whitespace from string values
-df = df.map(lambda x: x.strip() if isinstance(x, str) else x)
-
-def con_str_num(a):
-    if a.isdigit():
-        return int(a)
-    elif len(a)==0:
-        return pd.NA
-    return a
-
-# Convert numerical string into integer
-df=df.map(lambda x: con_str_num(x) if isinstance(x,str) else x)
-
-# Drop rows with any missing values
-df.dropna(inplace=True)
-
-# Drop duplicate rows
-df.drop_duplicates(inplace=True)
-
-# Map string variable to integer
-df['Building Type'] = df['Building Type'].map({'Residential':0,'Commercial':1,'Industrial':2})
-df['Day of Week'] = df['Day of Week'].map({'Weekday':0,'Weekend':1})
+# pre-process the data set
+df=p.pre_process(df)
 
 # Features (X) and Target (y)
 X = df[['Building Type', 'Square Footage', 'Number of Occupants', 'Appliances Used', 'Average Temperature', 'Day of Week' ]]

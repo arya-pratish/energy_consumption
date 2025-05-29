@@ -14,14 +14,8 @@ jobs:
                           with:
                                   python-version: '3.10'
 
-                        - name: install requirements module
-                          run: |
-                                cd ml_model
-                                pip install -r requirements.txt
-
                         - name: clean_data
                           run: |
-
                                 cd test
-                                cp ./ml_model/data.csv .
+                                pip install pandas
                                 python Unit_test.py
