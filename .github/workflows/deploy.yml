@@ -1,4 +1,4 @@
-name: CI/CD for Dockerized Flask App
+name: Automate the Deployment
 
 on:
   workflow_dispatch
