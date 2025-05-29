@@ -1,4 +1,8 @@
-from .energy_consumption.ml_model import model 
+import sys
+# caution: path[0] is reserved for script path (or '' in REPL)
+sys.path.insert(1, '/path/to/energy_consumption/ml_model')
+
+from ml_model import model
 import pandas as pd
 
 def check_func_digit():
