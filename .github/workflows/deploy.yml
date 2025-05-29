@@ -21,6 +21,7 @@ jobs:
 
     - name: Start the deplyment and services
       run: |
-        minikube kubectl apply -f k8s/deployment.yml
+        dnf install kubectl
+        kubectl apply -f k8s/deployment.yml
         kubectl get deployments
         
