@@ -1,6 +1,6 @@
 import sys
 # caution: path[0] is reserved for script path (or '' in REPL)
-sys.path.insert(1, '/path/to/home/runner/work/energy_consumption/energy_consumption/ml_model')
+sys.path.insert(1, '/home/runner/work/energy_consumption/energy_consumption')
 
 from ml_model import model
 import pandas as pd
