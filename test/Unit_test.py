@@ -1,4 +1,4 @@
-from ml_model import model 
+from .energy_consumption.ml_model import model 
 import pandas as pd
 
 def check_func_digit():
