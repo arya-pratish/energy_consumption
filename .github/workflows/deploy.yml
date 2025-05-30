@@ -1,11 +1,14 @@
 name: Automate the Deployment
 
 on:
-  workflow_dispatch
-#  push:
-#    branches: Dev
-#  pull_request:
-#    branches: Dev
+    push:
+      branches: feature
+    pull_request:
+      branches: feature
+    workflow_run:
+      workflows: ["Build and push the image to docker hub"]
+      types:
+        - completed
 
 jobs:
   deployment:
@@ -13,19 +16,21 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    - name: Start the minikube
-      run: |
-        if minikube stop; then 
-          minikube delete
-        else
-          curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
-          sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
-        fi
-        minikube start
+
+#    - name: Start the minikube
+#     run: |
+#        if minikube stop; then 
+#          minikube delete
+#        else
+#          curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
+#          sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+#        fi
+#        minikube start
 
     - name: Start the deplyment and services
       run: |
         
         kubectl apply -f k8s/deployment.yml
-        kubectl get deployments
+        
+
         
