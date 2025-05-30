@@ -16,7 +16,7 @@ def home():
 def predict():
     # Get form data
     build_type = int(request.form['build_type'])
-    sqft = float(request.form['sqft'])
+    sqft = int(request.form['sqft'])
     occupants = int(request.form['occupants'])
     appliances = int(request.form['appliances'])
     avg_temp = float(request.form['avg_temp'])
