@@ -1,11 +1,6 @@
 name: Build and push the image to docker hub
 on: 
-  push:
-    branches: 
-      - feature
-    paths-ignore: 
-      - '**.csv'
- 
+  workflow_dispatch
 
 jobs:
   Pipeline:

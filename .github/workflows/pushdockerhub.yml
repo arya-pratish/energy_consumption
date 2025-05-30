@@ -1,11 +1,12 @@
 name: CI/CD for Dockerized Flask App
 
 on:
-  workflow_dispatch
-#  push:
-#    branches: Dev
-#  pull_request:
-#    branches: Dev
+  push:
+    branches: 
+      - feature
+    paths-ignore: 
+      - '**.csv'
+
 
 jobs:
        
