@@ -1,4 +1,4 @@
-name: pythonworkflow
+name: Modle Retraining Workflow
 on: 
   push:
     paths: 
@@ -7,24 +7,23 @@ on:
 
 
 jobs:
-        datapipeline:
-                name: Retrain the model
-                runs-on: ubuntu-latest
-                steps:
-                        - name: Checkout code
-                          uses: actions/checkout@v4
+  datapipeline:
+    name: Retrain the model
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-                        - name: install python
-                          uses: actions/setup-python@v4
-                          with:
-                                  python-version: '3.10'
+      - name: install python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
-                        - name: Install dependency
-                          run: |
-                                cd ml_model
-                                pip install -r requirements.txt
-                                
-                                if python evaluate_and_train.py; then
-                                  echo "# New version of model added !" >> model.py
-                                fi
+      - name: Install dependencies
+        run: |
+          cd ml_model
+          pip install -r requirements.txt                   
+          if python evaluate_and_train.py; then
+            echo "# New version of model added !" >> model.py
+          fi
                                 

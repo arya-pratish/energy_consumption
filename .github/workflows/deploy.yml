@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: Prod
   workflow_run:
-    workflows: ["Build and push the image to docker hub"]
+    workflows: [ "CI/CD for Dockerized Flask App"]
     types:
     - completed
 
