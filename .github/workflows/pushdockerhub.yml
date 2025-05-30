@@ -31,6 +31,7 @@ jobs:
 
     - name: Run tests
       run: |
+        cd test
         pytest test_1.py
         pytest Unit_test.py
 
