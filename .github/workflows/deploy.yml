@@ -52,6 +52,6 @@ jobs:
         
     - name: Wait for deployment rollout
       run: |
-        kubectl rollout status deployment/energy-prediction -n Prod
+        kubectl rollout status deployment/energy-prediction -n main
 
         
