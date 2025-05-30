@@ -33,7 +33,7 @@ def predict():
     #  Format to float and 2 decimal places
     #formatted_prediction = f"The predicted value is ${round(float(prediction), 2)}"
 
-    formatted_prediction = 555
+    formatted_prediction = 10001
     return render_template("result.html", prediction=formatted_prediction)
 
 @app.route('/health')
