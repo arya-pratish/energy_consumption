@@ -17,7 +17,8 @@ def pre_process(df):
 
 # Convert numerical string into integer
     df=df.map(lambda x: con_str_num(x) if isinstance(x,str) else x)
-
+    print("Pre-processed Data:")
+    print(df.tail(5))
 # Drop rows with any missing values
     df.dropna(inplace=True)
 
