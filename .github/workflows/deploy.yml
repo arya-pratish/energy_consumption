@@ -26,9 +26,16 @@ jobs:
         pip install -r requirements.txt
         pip install pytest
 
+    - name: Train model
+      run: |
+        cd ml_model
+        python model.py
+        cp model.pkl ../test/
+
     - name: Run tests
       run: |
-        pytest test/model_test.py
+        cd test
+        pytest model_test.py
 
 
   deployment:
