@@ -8,17 +8,6 @@ on:
 #    branches: Dev
 
 jobs:
-  dockerbuild:
-    runs-on: self-hosted
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-    - name: Build The Docker Image
-      run: |
-        cd ml_model
-        tag=$(date +%Y%m%d%H%M%S)
-        docker build . -t workflow-test:$tag
-        docker run workflow-test:$tag
        
   build-and-test:
     runs-on: ubuntu-latest
@@ -34,14 +23,15 @@ jobs:
 
     - name: Install dependencies
       run: |
+        cd ml_model
         python -m pip install --upgrade pip
-        pip install flask
+        pip install -r requirements.txt
         pip install pytest
-        pip install pandas
 
     - name: Run tests
       run: |
-        pytest
+        pytest test_1.py
+        pytest Unit_test.py
 
   build-and-publish:
     needs: build-and-test
@@ -51,7 +41,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
     
-
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
 
@@ -60,9 +49,6 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-    
-    - name: Debug file list
-      run: ls -la ./ml_model
 
     - name: Build & push Docker image
       uses: docker/build-push-action@v2
@@ -70,7 +56,7 @@ jobs:
         context: ./ml_model/
         file: ml_model/Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/flasktest-app:latest
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/energy_cons_pred:latest
 
     - name: Image digest
       run: echo ${{ steps.build-and-publish.outputs.digest }}

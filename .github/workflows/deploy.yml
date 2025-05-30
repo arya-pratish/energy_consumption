@@ -1,35 +1,47 @@
 name: Automate the Deployment
 
-on:
-    
-    pull_request:
-      branches: feature
-    workflow_run:
-      workflows: ["Build and push the image to docker hub"]
-      types:
-        - completed
+on: 
+  pull_request:
+    branches: Prod
+  workflow_run:
+    workflows: ["Build and push the image to docker hub"]
+    types:
+    - completed
 
 jobs:
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        cd ml_model
+        pip install -r requirements.txt
+        pip install pytest
+
+    - name: Run tests
+      run: |
+        pytest model_test.py
+
+
   deployment:
+    needs: [testing]
     runs-on: self-hosted
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-
-#    - name: Start the minikube
-#     run: |
-#        if minikube stop; then 
-#          minikube delete
-#        else
-#          curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
-#          sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
-#        fi
-#        minikube start
 
     - name: Start the deplyment and services
       run: |
         kubectl delete deployments energy-prediction
         kubectl apply -f k8s/deployment.yml
         
+    - name: Wait for deployment rollout
+      run: |
+        kubectl rollout status deployment/energy-prediction -n Prod
 
         
