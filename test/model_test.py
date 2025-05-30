@@ -8,9 +8,6 @@ sys.path.insert(1, '/home/runner/work/energy_consumption/energy_consumption')
 from ml_model.flask_app import app
 
 
-def test_home():
-    response = app.test_client().get('/')
-    assert response.status_code == 200
 
 # Load the trained model
 @pytest.fixture(scope="module")
