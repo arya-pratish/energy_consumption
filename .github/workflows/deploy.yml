@@ -25,7 +25,7 @@ jobs:
 
     - name: Start the deplyment and services
       run: |
-        dnf install kubectl
+        
         kubectl apply -f k8s/deployment.yml
         kubectl get deployments
         
