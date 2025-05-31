@@ -47,7 +47,7 @@ jobs:
 
     - name: Start the deplyment and services
       run: |
-        kubectl delete deployments energy-prediction
+        kubectl delete deployments energy-prediction --ignore-not-found
         kubectl apply -f k8s/deployment.yml
         
     - name: Wait for deployment rollout
