@@ -23,5 +23,5 @@ jobs:
           pip install -r requirements.txt  
 
       - name: Retraining                 
-        run:  python evaluate_and_train.py
+        run:  python ml_model/evaluate_and_train.py
                                 
