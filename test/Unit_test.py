@@ -1,8 +1,7 @@
 import sys
 import pandas as pd
-# caution: path[0] is reserved for script path (or '' in REPL)
-sys.path.insert(1, '/home/runner/work/energy_consumption/energy_consumption')
 
+sys.path.insert(1, '/home/runner/work/energy_consumption/energy_consumption')
 from ml_model.preprocessing import con_str_num
 
 

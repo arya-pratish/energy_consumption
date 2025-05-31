@@ -1,20 +1,11 @@
-import unittest
+import sys
+import pandas as pd
 
-class TestStringMethods(unittest.TestCase):
+sys.path.insert(1, '/home/runner/work/energy_consumption/energy_consumption')
+from ml_model.preprocessing import pre_process
 
-    def test_upper(self):
-        self.assertEqual('foo'.upper(), 'FOO')
 
-    def test_isupper(self):
-        self.assertTrue('FOO'.isupper())
-        self.assertFalse('Foo'.isupper())
-
-    def test_split(self):
-        s = 'hello world'
-        self.assertEqual(s.split(), ['hello', 'world'])
-        # check that s.split fails when the separator is not a string
-        with self.assertRaises(TypeError):
-            s.split(2)
-
-if __name__ == '__main__':
-    unittest.main()
+def test_preprocess():
+    feature_names = ['Building Type', 'Square Footage', 'Number of Occupants', 'Appliances Used', 'Average Temperature', 'Day of Week','Energy Consumption']
+    df = pd.DataFrame(['Residential', 4323  ,20, 56,  '22  '  , 'Weekday'  , 4212], columns=feature_names )          
+    assert pre_process(df)== [0, 4323  ,20, 56,  22  ,  0 , 4212], "Fail to convert into numeric"
