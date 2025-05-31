@@ -1,7 +1,8 @@
 name: Model Retraining Workflow
 on: 
-  paths: 
-    - '**.csv'
+  push:
+    paths: 
+      - '**.csv'
 
 jobs:
   datapipeline:
