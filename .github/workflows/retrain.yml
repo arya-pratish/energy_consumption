@@ -1,4 +1,4 @@
-name: Modle Retraining Workflow
+name: Model Retraining Workflow
 on: 
   push:
     paths: 
