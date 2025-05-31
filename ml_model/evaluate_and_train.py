@@ -5,7 +5,7 @@ import preprocessing as p
 from sklearn.linear_model import LinearRegression
 
 # Load CSV file
-df = pd.read_csv('data.csv')
+df = pd.read_csv('/home/runner/work/energy_consumption/energy_consumption/ml_model/data.csv')
 
 # Pre-processing 
 df = p.pre_process(df)
