@@ -25,7 +25,7 @@ THRESHOLD = 0.85
 
 if R2 < THRESHOLD:
     print("Accuracy below threshold. This model is not OK!")  
-    
+
 else:
     print("Model accuracy is sufficient. OK!")
-   
+    
