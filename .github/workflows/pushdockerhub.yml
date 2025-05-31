@@ -1,13 +1,10 @@
-name: CI/CD for Dockerized Flask App
+name: CI for Dockerized Flask App
 
 on:
-  push:
+  pull_request:
     branches: 
       - feature
-    paths-ignore: 
-      - '**.csv'
-
-
+  
 jobs:
        
   build-and-test:

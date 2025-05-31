@@ -3,11 +3,7 @@ name: Automate the Deployment
 on: 
   pull_request:
     branches: Dev
-  workflow_run:
-    workflows: [ "CI/CD for Dockerized Flask App"]
-    types:
-    - completed
-
+  
 jobs:
   testing:
     runs-on: ubuntu-latest
