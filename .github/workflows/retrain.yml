@@ -1,0 +1,27 @@
+name: Model Retraining Workflow
+on: 
+  push:
+    paths: 
+      - '**.csv'
+
+jobs:
+  datapipeline:
+    name: Retrain the model
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: install python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          cd ml_model
+          pip install -r requirements.txt  
+
+      - name: Retraining                 
+        run:  python ml_model/evaluate_and_train.py
+                                

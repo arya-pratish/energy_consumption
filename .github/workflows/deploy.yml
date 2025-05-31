@@ -1,0 +1,53 @@
+name: Automate the Deployment
+
+on: 
+  pull_request:
+    branches: Prod
+  
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        cd ml_model
+        pip install -r requirements.txt
+        pip install pytest
+
+    - name: Train model
+      run: |
+        cd ml_model
+        python model.py
+        cp model.pkl ../test/
+
+    - name: Run tests
+      run: |
+        cd test
+        pytest model_test.py
+
+
+  deployment:
+    needs: [testing]
+    runs-on: self-hosted
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Start the deplyment and services
+      run: |
+        kubectl delete deployments energy-prediction --ignore-not-found
+        kubectl apply -f k8s/deployment.yml
+        
+    - name: Wait for deployment rollout
+      run: |
+        kubectl rollout status deployment/energy-prediction 
+
+        
