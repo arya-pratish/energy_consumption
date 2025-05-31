@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction of Energy Consumption</title>
+</head>
+<body>
+    <h2>Insurance Details Form</h2>
+    <form action="/predict" method="post">
+
+        <label for="Building Type">Building Type:</label>
+        <select id="BUilding Type" name="build_type" required>
+            <option value="0">Residential</option>
+            <option value="1">Commercial</option>
+            <option value="2">Industrial</option>
+        </select><br><br>
+
+        <label for="Square Footage">Square Footage:</label>
+        <input type="number" id="Square Footage" name="sqft" min="1" required><br><br>
+
+        <label for="Number of Occupants">Number of Occupants:</label>
+        <input type="number" id="Number of Occupants" name="occupants" min="1" required><br><br>
+
+        <label for="Appliances Used">Appliances Used:</label>
+        <input type="number" id="Appliances Used" name="appliances" min="1" required><br><br>
+
+        <label for="Average Temperature">Average Temperature:</label>
+        <input type="number" id="Average Temperature" name="avg_temp" step="0.1" required><br><br>
+
+
+        <label for="Day of Week">Day of Week:</label>
+        <select id="Day of Week" name="dow" required>
+            <option value="Weekday">Weekday</option>
+            <option value="Weekend">Weekend</option>
+        </select><br><br>
+
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
