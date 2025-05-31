@@ -26,7 +26,7 @@ def train_model():
     print("R² Score:", r2_score(y_test, y_pred))
 
 # Save model to a .pkl file
-    with open("ml_model/model.pkl", "wb") as file:
+    with open("model.pkl", "wb") as file:
         pickle.dump(model, file)
 
 

@@ -2,6 +2,7 @@ import pickle
 from sklearn.metrics import r2_score
 import pandas as pd
 import preprocessing as p
+from model import train_model
 
 
 # Load CSV file
@@ -12,9 +13,11 @@ df = p.pre_process(df)
 X_train, X_test, y_train, y_test = p.train_and_test(df)
 
 
-# Load model
-with open('model.pkl', 'rb') as f:
-    model = pickle.load(f)
+# Train model
+train_model()
+
+# Load the trained model
+model = pickle.load(open("model.pkl", "rb"))  
 
 # Predict and evaluate
 y_pred = model.predict(X_test)
@@ -23,14 +26,10 @@ print(f"Model accuracy: {R2}")
 
 # Threshold condition
 THRESHOLD = 0.85
-def retrain_or_not():
 
-    if R2 < THRESHOLD:
-        print("Accuracy below threshold. Retraining model...")
-    # Import your training logic
-        from model import train_model
-        train_model()
-        return 1
-    else:
-        print("Model accuracy is sufficient. Skipping retraining.")
-        return 0
+if R2 < THRESHOLD:
+    print("Accuracy below threshold. This model is not OK!")  
+    
+else:
+    print("Model accuracy is sufficient. OK!")
+   

@@ -20,8 +20,8 @@ jobs:
       - name: Install dependencies
         run: |
           cd ml_model
-          pip install -r requirements.txt                   
-          if python evaluate_and_train.py; then
-            echo "# New version of model added !" >> model.py
-          fi
+          pip install -r requirements.txt  
+          
+      - name: Retraining                 
+          python evaluate_and_train.py
                                 
