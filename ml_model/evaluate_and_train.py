@@ -2,8 +2,7 @@ import pickle
 from sklearn.metrics import r2_score
 import pandas as pd
 import preprocessing as p
-from model import train_model
-
+from sklearn.linear_model import LinearRegression
 
 # Load CSV file
 df = pd.read_csv('data.csv')
@@ -12,12 +11,9 @@ df = pd.read_csv('data.csv')
 df = p.pre_process(df)
 X_train, X_test, y_train, y_test = p.train_and_test(df)
 
-
 # Train model
-train_model()
-
-# Load the trained model
-model = pickle.load(open("model.pkl", "rb"))  
+model = LinearRegression()
+model.fit(X_train, y_train)
 
 # Predict and evaluate
 y_pred = model.predict(X_test)
