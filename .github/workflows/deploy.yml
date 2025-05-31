@@ -2,7 +2,7 @@ name: Automate the Deployment
 
 on: 
   pull_request:
-    branches: Dev
+    branches: Prod
   
 jobs:
   testing:

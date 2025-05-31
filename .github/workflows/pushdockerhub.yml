@@ -3,7 +3,7 @@ name: CI for Dockerized Flask App
 on:
   pull_request:
     branches: 
-      - feature
+      - Dev
   
 jobs:
        
